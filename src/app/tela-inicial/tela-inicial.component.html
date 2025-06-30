@@ -1,0 +1,35 @@
+  <header>
+    <div class="invisible"></div>
+    <div class="title">
+      <h1>Restaurante Kdelicias</h1>
+      <div style="
+          display: flex; 
+          flex-direction: row; 
+          justify-content: center;
+          gap: 100%;
+        ">
+        <p class="menu-item" (click)="telaAtual='cardapio'">Cardápio</p>
+        <p class="menu-item" (click)="telaAtual='menu'">menu</p>
+        <p class="menu-item" (click)="definirTelaInicial('bebidas')">bebidas</p>
+      </div>
+    </div>
+    <img class="qrCode" src="./assets/image.jpg" alt="">
+  </header>
+
+  <main> 
+    <app-tela-cardapio *ngIf="telaAtual=='cardapio'"></app-tela-cardapio>
+    <app-tela-bebidas *ngIf="telaAtual=='bebidas'"></app-tela-bebidas>
+  </main>
+
+  <footer>
+    <a type="button" [href]="link" target="_blank">
+      <p>2025 Restaurante Kdelicia</p>
+    </a>
+    
+  </footer>
+
+  <br>
+
+  <div style="display: flex; justify-content: center;">
+    <button class="botaoLoja" (click)="redirecionar()">Acesse a loja fisica</button>
+  </div> 
