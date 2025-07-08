@@ -7,13 +7,17 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { FormsModule } from '@angular/forms';
 import { TelaCardapioComponent } from './tela-cardapio/tela-cardapio.component';
 import { TelaBebidasComponent } from './tela-bebidas/tela-bebidas.component';
+import { TelaComboComponent } from './tela-combo/tela-combo.component';
+import { TelaCarrinhoComponent } from './tela-carrinho/tela-carrinho.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TelaInicialComponent,
     TelaCardapioComponent,
-    TelaBebidasComponent
+    TelaBebidasComponent,
+    TelaComboComponent,
+    TelaCarrinhoComponent
   ],
   imports: [
     BrowserModule,

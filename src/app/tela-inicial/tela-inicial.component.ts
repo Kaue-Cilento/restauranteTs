@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ItemCarrinho } from '../models/item-carrinho.model';
+import { Comida } from '../models/comida.model';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -11,6 +13,7 @@ export class TelaInicialComponent {
   nome: string = '';
   link: string = 'https://www.restauranteKdelicia.com.br';
   clicou: boolean = false;
+  itensCarrinhos: ItemCarrinho[] = [];
 
   telaAtual = "cardapio";
 
@@ -27,6 +30,11 @@ export class TelaInicialComponent {
 
   definirTelaInicial(telaNome: string){
     this.telaAtual = telaNome
+  }
+
+  adicionarAoCarrinho($event: Comida){
+    let item = new ItemCarrinho($event, 1);
+    this.itensCarrinhos.push(item);
   }
 }
 

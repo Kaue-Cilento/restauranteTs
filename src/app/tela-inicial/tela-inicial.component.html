@@ -1,35 +1,37 @@
-  <header>
-    <div class="invisible"></div>
-    <div class="title">
-      <h1>Restaurante Kdelicias</h1>
-      <div style="
-          display: flex; 
-          flex-direction: row; 
-          justify-content: center;
-          gap: 100%;
-        ">
-        <p class="menu-item" (click)="telaAtual='cardapio'">Cardápio</p>
-        <p class="menu-item" (click)="telaAtual='menu'">menu</p>
-        <p class="menu-item" (click)="definirTelaInicial('bebidas')">bebidas</p>
+  <header style="display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative">
+    <h1>Restaurante Kdelicias</h1>
+    <div
+      class="header-inicial"
+      >
+      <p class="menu-item" type="button" style="cursor: pointer;"(click)="telaAtual='cardapio'">Cardápio</p>
+      <p class="menu-item" (click)="telaAtual='combos e lanches'">Combos e lanches</p>
+      <p class="menu-item" (click)="definirTelaInicial('bebidas')">Bebidas</p>
+      <div class="btn-carrinho" style="position:relative">
+        <img class="carrinho" src="../../assets/carrinho.png" (click)="telaAtual='Carrinho'">
+        <div class="quantidade-carrinho" *ngIf="itensCarrinhos.length > 0">{{itensCarrinhos.length}}</div>
       </div>
+     
     </div>
     <img class="qrCode" src="./assets/image.jpg" alt="">
+
   </header>
 
-  <main> 
-    <app-tela-cardapio *ngIf="telaAtual=='cardapio'"></app-tela-cardapio>
-    <app-tela-bebidas *ngIf="telaAtual=='bebidas'"></app-tela-bebidas>
+  <main>
+    <app-tela-cardapio *ngIf="telaAtual=='cardapio'" (adicionarCarrinhoOutput)="adicionarAoCarrinho($event)"></app-tela-cardapio>
+    <app-tela-bebidas *ngIf="telaAtual=='bebidas'" (adicionarCarrinhoOutput)="adicionarAoCarrinho($event)"></app-tela-bebidas>
+    <app-tela-combo *ngIf="telaAtual=='combos e lanches'"></app-tela-combo>
+    <app-tela-carrinho *ngIf="telaAtual=='carrinho'" [itensCarrinhosInput]="itensCarrinhos"></app-tela-carrinho>
   </main>
 
   <footer>
     <a type="button" [href]="link" target="_blank">
       <p>2025 Restaurante Kdelicia</p>
     </a>
-    
+
   </footer>
 
   <br>
 
   <div style="display: flex; justify-content: center;">
     <button class="botaoLoja" (click)="redirecionar()">Acesse a loja fisica</button>
-  </div> 
+  </div>
