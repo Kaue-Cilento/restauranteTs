@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ItemCarrinho } from '../models/item-carrinho.model';
 
 @Component({
@@ -6,10 +6,9 @@ import { ItemCarrinho } from '../models/item-carrinho.model';
   templateUrl: './tela-carrinho.component.html',
   styleUrls: ['../tela-inicial/tela-inicial.component.css']
 })
-export class TelaCarrinhoComponent implements OnChanges{
-  @Input() itensCarrinhosInput: ItemCarrinho[] = [];
+export class TelaCarrinhoComponent{
 
-  ngOnChanges() {
-    //ativa quando acontece uma mudança em algum input
-  }
+  @Input() itensCarrinhoInput: ItemCarrinho[] = [];
 }
+
+

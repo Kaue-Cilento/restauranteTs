@@ -8,5 +8,5 @@ export class ItemCarrinho {
         this.comida = comida;
         this.quantidade = quantidade;
     }
-
 }
+

@@ -11,11 +11,11 @@ import { Comida } from '../models/comida.model';
 export class TelaCardapioComponent implements OnInit {
   comidas: Comida[] = [];
   menusTipoComida: any[] = [];
-  @Output() adicionarCarrinhoOutput = new EventEmitter<Comida>();  
+  @Output() adicionarCarrinhoOutput = new EventEmitter<Comida>();
 
   ngOnInit() {
     this.adicionarComidas();
-    
+
     //Cria uma array com todos os tipos, no caso, Entrada, Pratos Principais e Sobremesas
     let tiposComida: any[] = Array.from(
       new Set(this.comidas.map((o) => o.tipo))
@@ -26,8 +26,6 @@ export class TelaCardapioComponent implements OnInit {
       let comidasDesseTipo = this.comidas.filter(c => c.tipo == tipo)
       this.menusTipoComida.push(comidasDesseTipo)
     }
-
-    console.log(this.menusTipoComida)
   }
 
   adicionarComidas(){

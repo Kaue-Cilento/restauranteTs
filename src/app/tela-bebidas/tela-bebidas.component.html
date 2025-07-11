@@ -1,39 +1,18 @@
 
       <section class="categoria B3">
-      <h2>Bebidas</h2>
-
-        <div class="item-bebidas">
-          <span class="nome">Guarana/Zero;</span>
-          <span class="preco">R$ 8,00</span>
-        </div>
-
-        <div class="item-bebidas">
-          <span class="nome">H20/Limoneto;</span>
-          <span class="preco">R$ 9,00</span>
+      <div class="coluna cl2">
+        <section class="categoria" *ngFor="let menuTipo of menusTipoComida">
+        <h2>{{menuTipo[0].tipo}}</h2>
+        <span class="item" *ngFor="let comida of menuTipo">
+          <span class="nome">{{comida.nome}}</span>
+          <div>
+            <span class="preco">R$ {{comida.preco}},00</span>
+            <button class="addCarrinho" (click)="adicionarAoCarrinho(comida.nome, comida.preco, comida.tipo)">+</button>
+          </div>
+        </span>
+      </section>
       </div>
-
-        <div class="item-bebidas" >
-          <span class="nome">Coca Cola/Zero;</span>
-          <span class="preco">R$ 10,00</span>
-        </div>
-
-         <div class="item-bebidas">
-          <span class="nome"> Suco de morango;</span>
-          <span class="preco">R$ 15,00</span>
-        </div>
-
-
-         <div class="item-bebidas">
-          <span class="nome"> Suco de maracuja;</span>
-          <span class="preco">R$ 16,00</span>
-        </div>
-
-
-         <div class="item-bebidas">
-          <span class="nome"> Suco de laranja;</span>
-          <span class="preco">R$ 15,00</span>
-        </div>
-    </section>
+      </section>
     <div class="coluna coluna-imagem cl5">
       <img src="assets/Bebidas.jpg" alt="">
     </div>
