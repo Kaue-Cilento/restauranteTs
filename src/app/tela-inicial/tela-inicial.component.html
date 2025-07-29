@@ -8,7 +8,10 @@
       <p class="menu-item" (click)="definirTelaInicial('bebidas')">Bebidas</p>
       <div class="btn-carrinho" style="position:relative">
         <img class="carrinho" src="../../assets/carrinho.png" (click)="telaAtual='carrinho'">
-        <div class="quantidade-carrinho" *ngIf="itensCarrinho.length > 0">{{quantidadeCarrinho}}</div>
+        <div class="quantidade-carrinho" *ngIf="quantidadeCarrinho > 0">
+  {{ quantidadeCarrinho }}
+</div>
+
       </div>
 
     </div>
@@ -20,7 +23,11 @@
     <app-tela-cardapio *ngIf="telaAtual=='cardapio'" (adicionarCarrinhoOutput)="adicionarAoCarrinho($event)"></app-tela-cardapio>
     <app-tela-bebidas *ngIf="telaAtual=='bebidas'" (adicionarCarrinhoOutput)="adicionarAoCarrinho($event)"></app-tela-bebidas>
     <app-tela-combo *ngIf="telaAtual=='combos e lanches'" (adicionarCarrinhoOutput)="adicionarAoCarrinho($event)"></app-tela-combo>
-    <app-tela-carrinho *ngIf="telaAtual=='carrinho'" [itensCarrinhoInput]="itensCarrinho"></app-tela-carrinho>
+   <app-tela-carrinho *ngIf="telaAtual=='carrinho'"
+  [itensCarrinhoInput]="meuCarrinho"
+  (carrinhoAtualizado)="atualizarCarrinho($event)">
+</app-tela-carrinho>
+
   </main>
 
   <footer>

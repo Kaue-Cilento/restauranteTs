@@ -13,8 +13,10 @@ export class TelaInicialComponent {
   nome: string = '';
   link: string = 'https://www.restauranteKdelicia.com.br';
   clicou: boolean = false;
-  itensCarrinho: ItemCarrinho[] = [];
+
   quantidadeCarrinho: number = 0;
+  meuCarrinho: ItemCarrinho[] = [];
+
 
   telaAtual = "cardapio";
 
@@ -33,17 +35,33 @@ export class TelaInicialComponent {
     this.telaAtual = telaNome
   }
 
-  adicionarAoCarrinho($event: Comida){
-    let comidaExistente = this.itensCarrinho.find(i => i.comida.nome == $event.nome)
-    if (comidaExistente){
-      comidaExistente.quantidade++ 
-    }
-    else{
-      let item = new ItemCarrinho($event, 1);
-      this.itensCarrinho.push(item);
-    }
-    this.quantidadeCarrinho++
+adicionarAoCarrinho($event: Comida) {
+  let comidaExistente = this.meuCarrinho.find(i => i.comida.nome === $event.nome);
+  if (comidaExistente) {
+    comidaExistente.quantidade++;
+  } else {
+    let item = new ItemCarrinho($event, 1);
+    this.meuCarrinho = [...this.meuCarrinho, item];
   }
+
+  this.atualizarQuantidadeCarrinho();
+}
+
+
+
+atualizarCarrinho(carrinhoAtualizado: ItemCarrinho[]) {
+  this.meuCarrinho = carrinhoAtualizado;
+  this.atualizarQuantidadeCarrinho();
+}
+
+atualizarQuantidadeCarrinho() {
+  this.quantidadeCarrinho = this.meuCarrinho.reduce(
+    (total, item) => total + item.quantidade,
+    0
+  );
+}
+
+
 }
 
 // [] ts -> html

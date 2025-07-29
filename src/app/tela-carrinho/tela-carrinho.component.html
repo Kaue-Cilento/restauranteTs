@@ -1,6 +1,40 @@
-<div class= ""*ngFor="let item of itensCarrinhoInput">
-    {{item.comida.nome}}
-    {{item.comida.preco}}
-    {{item.comida.tipo}}
-    {{item.quantidade}}
+<!-- CONTEÚDO PRINCIPAL: Itens do carrinho -->
+<div *ngIf="telaAtual === 'carrinho'">
+  <div class="detalhesCarrinho" *ngFor="let item of carrinho; let i = index">
+
+    <div>
+      <button class="botaoMenos" (click)="diminuirQuantidade(i)">-</button>
+      <span class="botaoQuantidade"> {{ item.quantidade }} </span>
+      <button class="botaoMais" (click)="aumentarQuantidade(i)">+</button>
+    </div>
+    <div class="nomeDs">
+      {{ item.comida.nome }} - {{ item.comida.tipo }}
+    </div>
+    <span class="preco">R$ {{ item.comida.preco * item.quantidade }},00</span>
+  </div>
+
+  <div class="total">
+    Total: R$ {{ calcularTotal() }},00
+  </div>
+
+  <div class="botaoBack">
+    <button class="botaoEnd" (click)="fecharPedido()">Fechar pedido</button>
+  </div>
 </div>
+
+<!-- CONTEÚDO SECUNDÁRIO: Resumo do Pedido -->
+<div *ngIf="telaAtual=='resumoPedido'">
+    <app-tela-resumo-pedido
+    [resumoCarrinho]="pedidoFechado"
+    (confirmarPagamento)="irParaPagamento()"
+  ></app-tela-resumo-pedido>
+  <div class="botaoBack">
+      <button class="botaoVoltar"(click)="telaAtual = 'carrinho'"><label style="margin-top: 2px;">Voltar para o carrinho</label></button>
+    </div>
+</div>
+
+<div *ngIf="telaAtual === 'pagamento'">
+  <app-tela-pagamento></app-tela-pagamento>
+  <button style="cursor:pointer"(click)="telaAtual = 'resumoPedido'">Voltar</button>
+</div>
+

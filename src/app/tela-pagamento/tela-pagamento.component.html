@@ -1,0 +1,134 @@
+<h2>Pagamento</h2>
+
+<!-- <p>Total a pagar: <strong>R$ {{ total | number:'1.2-2' }}</strong></p> -->
+
+<form
+  [formGroup]="formulario"
+  (ngSubmit)="submit()"
+  style="display: flex; justify-content: center"
+>
+  <div>
+    <h3>FORMAS DE PAGAMENTO</h3>
+    <select
+      class="formasDePagamentos"
+      formControlName="formaPagamento"
+      [(ngModel)]="pagamento.formaPagamento"
+    >
+      <option value="d">Debito</option>
+      <option value="m">Dinheiro</option>
+      <option value="c">Credito</option>
+      <option value="p">Pix</option>
+    </select>
+
+    <h3>DADOS PESSOAIS</h3>
+    <p>NOME</p>
+    <input
+      type="text"
+      formControlName="nome"
+      [(ngModel)]="pagamento.nome"
+      placeholder="Digite seu nome"
+    />
+
+    <p>CPF</p>
+    <input
+      type="text"
+      formControlName="cpf"
+      [(ngModel)]="pagamento.cpf"
+      placeholder="000.000.000-00"
+    />
+
+    <h3>ENDEREÇO</h3>
+
+    <p>CEP</p>
+    <input type="text" formControlName="cep" [(ngModel)]="pagamento.cep" />
+
+    <div style="display: flex; flex-direction: row">
+      <p>RUA</p>
+
+      <p style="margin-left: 44%">Nº</p>
+    </div>
+
+    <div style="display: flex; flex-direction: row; height: 25px">
+      <input type="text" formControlName="rua" [(ngModel)]="pagamento.rua" />
+
+      <input
+        type="text"
+        formControlName="numero"
+        [(ngModel)]="pagamento.numero"
+        style="position: absolute; left: 50.6%"
+      />
+    </div>
+
+    <p>BAIRRO</p>
+    <input
+      type="text"
+      formControlName="bairro"
+      [(ngModel)]="pagamento.bairro"
+    />
+
+    <p>UF</p>
+    <input type="text" formControlName="uf" [(ngModel)]="pagamento.uf" />
+
+    <div *ngIf="pagamento.formaPagamento === 'p'" class="pix">
+      <img class="qrCodePix" src="./assets/qrCodePix.jpg" alt="" />
+      <p #pixKey class="chavePix">1234 5678 9012 3456 7890</p>
+      <button class="botaoCopiar"(click)="copiarPix(pixKey.innerText)">Copiar chave PIX</button>
+      <p *ngIf="copiado" style="color: green;">Copiado para a área de transferência!</p>
+    </div>
+
+    <!-- Representações de mais um item no IF
+ 
+&& = "E": representado qaundo tiver dois itens que terão que ser validados
+
+|| = "OU": representado quando o IF precisa ser validado quando tiver 1 item ou o outro, 
+então se um funcionar e o outro não, o IF irá funcionar no mesmo jeito
+
+-->
+    <div
+      *ngIf="
+        pagamento.formaPagamento === 'd' || pagamento.formaPagamento === 'c'
+      "
+    >
+      <p>Nome do titular no cartão:</p>
+      <input type="text" [(ngModel)]="pagamento.nomeCartao" name="nomeCartao" />
+
+      <p>Número do cartão:</p>
+      <input
+        type="text"
+        [(ngModel)]="pagamento.numeroCartao"
+        name="numeroCartao"
+        maxlength="16"
+      />
+
+      <p>Validade (MM/AA):</p>
+      <input
+        type="text"
+        [(ngModel)]="pagamento.validade"
+        name="validade"
+        maxlength="5"
+      />
+
+      <p>CVV:</p>
+      <input type="text" [(ngModel)]="pagamento.cvv" name="cvv" maxlength="3" />
+    </div>
+
+    <div *ngIf="pagamento.formaPagamento === 'm'">
+      <h4>Precisa de Troco?</h4>
+      <select
+        class="Option"
+        formControlName="option"
+        [(ngModel)]="pagamento.option"
+      >
+        <option value="s">Sim</option>
+        <option value="n">Não</option>
+      </select>
+      <div *ngIf="pagamento.option === 's'">
+        <input type="number" placeholder="Quer troco para quanto?" />
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end">
+      <button class="botaoFinalizar" type="submit">Finalizar Pagamento</button>
+    </div>
+  </div>
+</form>

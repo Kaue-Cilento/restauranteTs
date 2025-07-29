@@ -9,6 +9,7 @@ import { Comida } from '../models/comida.model';
 export class TelaBebidasComponent {
   comidas: Comida[] = [];
   menusTipoComida: any[] = [];
+  telaAtual = "carrinho";
   @Output() adicionarCarrinhoOutput = new EventEmitter<Comida>();
 
   ngOnInit() {

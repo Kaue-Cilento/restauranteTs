@@ -1,0 +1,58 @@
+<h2>Resumo do pedido</h2>
+
+<table class="resumo-table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Tipo</th>
+      <th>Quantidade</th>
+      <th>Preço unitário</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of resumoCarrinho">
+      <td>{{ item.comida.nome }}</td>
+      <td>{{ item.comida.tipo }}</td>
+      <td>{{ item.quantidade }}</td>
+      <td>R$ {{ item.comida.preco }},00</td>
+      <td>R$ {{ item.comida.preco * item.quantidade }},00</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td
+        colspan="4"
+        style="text-align: right; font-weight: bold; padding-top: 10px"
+      >
+        Subtotal:
+      </td>
+      <td style="font-weight: bold; padding-top: 5px">
+        R$ {{ calcularTotal() }},00
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<ng-template #nenhumItem>
+  <p>Nenhum item no resumo</p>
+  <p></p
+></ng-template>
+
+<div class="total-geral" *ngif="resumoCarrinho.length > 0">
+  <strong>Total Geral: R$ {{ calcularTotal() }},00</strong>
+</div>
+
+<div class="botoes-resumo">
+  <button class="botaoConfirmar" (click)="pagarAgora()">
+    Confirmar Pedido
+  </button>
+</div>
+
+
+<!-- <div *ngIf="telaAtual=='resumoPedido'">
+  <app-tela-resumo-pedido  [resumoCarrinho] = "pedidoFechado"></app-tela-resumo-pedido>
+  <div class="botaoBack">
+      <button class="botaoVoltar"(click)="telaAtual = 'carrinho'"><label style="margin-top: 2px;">Voltar para o carrinho</label></button>
+    </div>
+</div> -->

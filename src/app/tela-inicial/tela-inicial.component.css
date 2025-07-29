@@ -287,3 +287,140 @@ app-tela-combo {
 h2{
   text-transform: capitalize;
 }
+
+.botaoQuantidade {
+  text-align: center;
+  margin-left: 10px;
+}
+
+.detalhesCarrinho {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-items: center;                 /* centraliza verticalmente */
+  column-gap: 12px;                    /* espaço entre colunas */           /* só risco superior p/ separar linhas */
+  padding: 4px 0;
+}
+.nomeDs{
+  width: 35%;
+  text-align: center;
+}
+
+.total{
+margin-left: 1150px;
+font-weight: bold;
+}
+
+.botaoMenos{
+  width: 30px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.botaoMais{
+  width: 30px;
+  cursor: pointer;
+}
+
+  .botaoEnd{
+    width: 8%;
+    cursor: pointer;
+  }
+
+  .botaoBack{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .botaoVoltar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 110px;
+    height: 40px;
+  }
+
+  .botaoConfirmar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 110px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .resumo-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .resumo-table th,
+  .resumo-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .total-geral {
+    margin-top: 20px;
+    font-size: 1.2px;
+    text-align: right;
+  }
+
+  .Subtotal {
+  text-align: right;
+  font-style: bold;
+  
+}
+
+.formasDePagamentos{
+  width: 400px;
+  height: 40px;
+  padding: 10px;
+}
+
+.botaoFinalizar {
+  position: absolute;
+  right: 10px;
+  margin-top: -1%;
+  display: flex;
+    width: 110px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.qrCodePix {
+  display: block;     
+  margin: 20px auto;   
+  max-width: 200px;    
+  height: auto;        
+}
+
+.pix{
+   text-align: center;
+  margin-top: 20px;
+}
+
+.chavePix {
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.botaoCopiar{
+  padding: 8px 16px;
+  margin-bottom: 50px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.mensagemSucesso {
+  color: green;
+  font-size: 14px;
+}
+
+
